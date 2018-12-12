@@ -1,5 +1,7 @@
 import Vue from 'vue'
+import './plugins/vuetify'
 import App from './App.vue'
+import './stylus/main.styl' // customize Vuetify styling
 
 Vue.config.productionTip = false
 
