@@ -1,34 +1,61 @@
 <template>
-  <div id="app">
-    <NavigationBar />
-    <v-container fluid>
-      <v-layout row>
-        <v-flex xs6 sm3 md2 lg1>
-          <SideBar />
-        </v-flex>
-        <v-flex xs6 sm9 md10 lg11>
-          <router-view/>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+  <VApp>
+    <TheNavbar @search="handleSearch" />
+    <VContainer fluid>
+      <VLayout
+        row
+        wrap
+        class="mt-5"
+      >
+        <VFlex
+          xs12
+          sm3
+          md2
+          lg1
+        >
+          <TheSidebar />
+        </VFlex>
+        <VFlex
+          xs12
+          sm9
+          md10
+          lg11
+        >
+          <RouterView :search="searchString" />
+        </VFlex>
+      </VLayout>
+    </VContainer>
+    <TheButtonUp />
+  </VApp>
 </template>
 
 <script>
-  import NavigationBar from './components/NavigationBar';
-  import SideBar from './components/SideBar';
+  import TheNavbar from './components/TheNavbar';
+  import TheSidebar from './components/TheSidebar';
+  import TheButtonUp from './components/TheButtonUp';
 
   export default {
     components: {
-      NavigationBar,
-      SideBar
+      TheNavbar,
+      TheSidebar,
+      TheButtonUp
+    },
+    data () {
+      return {
+        searchString: ''
+      };
+    },
+    methods: {
+      handleSearch (searchString) {
+        this.searchString = searchString;
+      }
     }
   };
 
 </script>
 
-<style>
-  body {
+<style scoped>
+  .application {
     font-family: 'Lato', sans-serif;
   }
 </style>

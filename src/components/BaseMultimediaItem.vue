@@ -1,6 +1,8 @@
+<!-- Image with caption and copyright -->
 <template v-if="media">
   <VLayout row>
-    <VFlex>
+    <!-- do not stretch image container -->
+    <VFlex :style="{ flex: '0 1 auto' }">
       <VImg
         :src="media.url"
         :alt="media.caption"
@@ -9,8 +11,11 @@
       <p class="copyright-text grey--text">
         {{ media.copyright }}
       </p>
+      <p class="hidden-sm-and-up caption grey--text">
+        {{ media.caption }}
+      </p>
     </VFlex>
-    <VFlex>
+    <VFlex class="hidden-xs-only">
       <p class="caption grey--text">
         {{ media.caption }}
       </p>
@@ -20,11 +25,16 @@
 
 <script>
   export default {
-    props: ['media']
+    props: {
+      media: {
+        type: Object,
+        required: true
+      }
+    }
   }
 </script>
 
-<style>
+<style scoped>
   .copyright-text {
     font-size: 10px;
   }
