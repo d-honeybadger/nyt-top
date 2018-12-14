@@ -17,7 +17,7 @@
     </VFlex>
     <VFlex class="hidden-xs-only">
       <p class="caption grey--text">
-        {{ media.caption }}
+        {{ media.caption.replace(/\&[rl]squo;/g, '\'').replace(/\&[rl]dquo;/g, '\"') }}
       </p>
     </VFlex>
   </VLayout>

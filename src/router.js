@@ -16,13 +16,8 @@ const routes = sectionNames.map(name => {
     component: ArticleList,
     props: { section }
   };
-}).concat({ // add the default route: '/' corresponds to the home section
-  path: '/',
-  name: 'default',
-  component: ArticleList,
-  props: { section: 'home' }
-}).concat({ // any unrecognized route will be redirected to home section
-  path: '*', redirect: '/'
+}).concat({ // all other routes, including '/', will be redirected to home section
+  path: '*', redirect: '/home'
 });
 
 export default new Router({
